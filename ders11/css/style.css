@@ -1,0 +1,24 @@
+#container{
+width:800px; height:700px;
+border:3px solid black;
+margin:10px auto 0px auto;
+}
+#menu{
+width:796px; height:100px;
+border:2px solid blue;
+}
+#left_menu{
+width:100px;
+height:500px;
+border:2px solid green; float:left;
+}
+#content{
+width:692px;
+height:500px;
+border:2px solid gray; float:left;
+}
+#footer{
+width:796px;
+height:88px;
+border:2px solid red; float:left;
+}
