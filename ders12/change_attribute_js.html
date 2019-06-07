@@ -3,18 +3,24 @@
 <html>
 <head>  
 <script>
- 
+ function changeAndSize(){
+ var sekil=document.getElementById('sekil');
+ sekil.style.width="200px";
+  sekil.src="images/sekil2.gif";
+   
+ } 
 </script>
 </head>
 
-<body>
- 
- 
+<body> 
  <button type="button" 
- onclick="document.getElementById('sekil').src='images/sekil2.gif'"> 
- sekili deyis </button>
-
+ onclick="changeAndSize()"> 
+ sekili deyis ve boyuk </button> 
 <img id="sekil"  src="images/sekil1.gif" />
-
+ 
+ <h1 value="ad"    >   </h1>
+ 
+ 
+ 
 </body>
 </html>

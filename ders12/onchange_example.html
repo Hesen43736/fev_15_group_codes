@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function yaziDeyisdi(i1){
+var p1=document.getElementById('p1');
+p1.innerHTML=i1.value.length;
+}
+
+</script>
+</head>
+
+<body> 
+
+<input type="text" id="yazi" oninput="yaziDeyisdi(this)" />
+
+<p id="p1" > Yazi burada gorunecek</p>
+
+</body>
+</html>
