@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>  <title> toplama misal </title> 
+
+<script>  function topla(){
+
+var n1=document.getElementById('n1').value;
+var n2=document.getElementById('n2').value;
+
+n1=parseInt(n1);
+n2=parseInt(n2);
+
+
+var n=n1+n2;
+var netice=document.getElementById('n');
+netice.innerHTML=""+n;
+} 
+
+</script>
+</head>
+
+<body>
+ 
+ <input type="number" id="n1" oninput="topla()" /> <br>
+ <input type="number" id="n2" oninput="topla()" /> <br>
+ 
+ 
+ 
+<p id="n">cavab</p>
+
+</body>
+</html>
