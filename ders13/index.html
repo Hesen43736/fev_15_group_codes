@@ -5,30 +5,17 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
  <script src="js/app.js" type="text/javascript" >  </script>
  <script>  
- function saveTask(){
- var inputElement=document.getElementById("task");
- var text=inputElement.value;
- var text1=document.createTextNode(text);
- var p1=document.createElement("p");
- p1.appendChild(text1);
- var parent=document.getElementById("tasks");
- parent.appendChild(p1);
- }
  </script>
- 
 </head>
 <body>  
-Task : <input type="text" id="task" />  
- <button onclick="saveTask()"> Save Task </button>
+Name :  <input type="text" id="name" /> <br>
+ Salary :  <input type="text" id="salary" /> <br>
+ <button onclick="saveHuman()"> Save Human </button>
 <hr>
-<div id="tasks">
- 
+<table id="humans">
+<tr> <th> Name </th>  <th> Salary </th>  </tr>
 
- </div>
 
- 
- 
- 
- 
+ </table>
  </body>
 </html>

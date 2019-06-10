@@ -1,0 +1,8 @@
+#humans,th,td{
+	border:1px solid black;
+	 
+}
+#humans > tr > td{
+	color:red;
+	
+}
