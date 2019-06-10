@@ -8,12 +8,22 @@
  </script>
 </head>
 <body>  
-Name :  <input type="text" id="name" /> <br>
- Salary :  <input type="text" id="salary" /> <br>
- <button onclick="saveHuman()"> Save Human </button>
+Food Name :  <input type="text" id="name" /> <br>
+
+Food price :  <input type="text" id="price" /> <br>
+
+Food image :  <input type="file" id="file" /> <br>
+
+
+<button onclick="saveFood()"> Save Food </button>
 <hr>
-<table id="humans">
-<tr> <th> Name </th>  <th> Salary </th>  </tr>
+<table id="foods">
+<tr> <th> Name </th>  <th> Price </th> <th> Image </th>  </tr>
+
+<tr> <td> Merci </td>  <td> 2.5 AZN </td> <td> <img src="images/merci.jpg"/> </td>  </tr>
+
+<tr> <td> Borsh </td>  <td> 3.5 AZN </td> <td> <img src="images/bors.jpg"/> </td>  </tr>
+
 
 
  </table>

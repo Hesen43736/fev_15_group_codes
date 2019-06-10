@@ -25,3 +25,18 @@ function saveTask(){
  var parent=document.getElementById("humans");
  parent.appendChild(tr);
  }
+ 
+ function saveFood(){
+	 
+	 var name=document.getElementById('name').value;
+	 var price=document.getElementById('price').value;
+	 var file=document.getElementById('file').value;
+	 
+	 alert(file);
+	 
+	 
+ }
+ 
+ 
+ 
+ 
