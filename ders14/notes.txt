@@ -1,0 +1,19 @@
+Development
+Production
+
+Product
+private int id;
+private String name;
+private double price;
+private String image;
+
+Basket
+List
+
+name,price,quantity
+
+
+
+
+
+
