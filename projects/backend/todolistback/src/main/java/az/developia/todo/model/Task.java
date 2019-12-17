@@ -8,6 +8,7 @@ public class Task {
 	public Integer day ;
 	public Date register ;
 	public Category category ;
+	public String status ;
 	public Integer getId() {
 		return id;
 	}
@@ -42,6 +43,12 @@ public class Task {
 	public String toString() {
 		return "Task [id=" + id + ", task=" + task + ", day=" + day + ", register=" + register + ", category="
 				+ category + "]";
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

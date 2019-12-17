@@ -25,7 +25,10 @@ this.matDialog.open(AddTodoComponent);
 columnDefs = [
   {headerName: 'Id', field: 'id', sortable: true, filter: true, checkboxSelection: true,width:100},
   {headerName: 'Task', field: 'task', sortable: true, filter: true},
-  {headerName: 'Day', field: 'day', sortable: true, filter: true}
+  {headerName: 'Day', field: 'day', sortable: true, filter: true},
+  {headerName: 'Register', field: 'register', sortable: true, filter: true},
+  {headerName: 'Category', field: 'category.name', sortable: true, filter: true},
+  {headerName: 'Status', field: 'status', sortable: true, filter: true}
 ];
 onGridReady(event) {
   this.gridApi = event.api;

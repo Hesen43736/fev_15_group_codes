@@ -19,18 +19,15 @@ public class TaskRestController {
 
 	@RequestMapping(method=RequestMethod.POST)
 	public void addTask(@RequestBody Task task){
+		int id=DB.tasks.size()+1;
+		task.setId(id);
 		DB.tasks.add(task);
 	}
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Task> findAll(){
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 
 		return DB.tasks;
 	}
 	

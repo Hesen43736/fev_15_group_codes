@@ -1,10 +1,10 @@
 export class Task{
-public id:number;
+public id:number=0;
 public task:string;
 public day:number;
 public register:Date;
 public category:Category;
-
+public status:string='Həll olunmayıb';
 constructor(){
     this.category=new Category();
 }

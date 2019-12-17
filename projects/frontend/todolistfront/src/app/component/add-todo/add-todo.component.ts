@@ -31,7 +31,7 @@ categories:Category[]=[];
     // todo.day=this.todo.day;
     // todo.id=(this.todoService.todos.length+1);
     // this.todoService.todos.push(todo);
-
+console.log(this.todo);
 this.todoService.addTodoToBackend(this.todo);
 
 
