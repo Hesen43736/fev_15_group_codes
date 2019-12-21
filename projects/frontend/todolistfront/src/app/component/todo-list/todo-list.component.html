@@ -1,4 +1,7 @@
 <button (click)="onAddTodo()" class="btn btn-success">Add todo</button>
+
+<button class="btn btn-danger" (click)="onDeleteTodo()" >Sil</button>
+<button class="btn btn-primary" (click)="onUpdateTodo()" >Redaktə et</button>
 <hr>
 
 <!-- <table class="table">
@@ -14,7 +17,7 @@
     </tbody>
 </table> -->
 
-<hr>
+ 
 <button (click)="loadRows()">Siyahını yenilə</button>
 
 <input placeholder="Axtarış" [(ngModel)]="searchText" type="text" (keyup)="quickSearch()"/>

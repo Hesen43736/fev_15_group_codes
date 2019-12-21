@@ -53,4 +53,35 @@ console.log('bu sorgudan sonraki koddur');
 
 }
 todos:Task[]=[];
+onDeleteTodo(){
+  let selectedRows=this.agGrid.api.getSelectedRows();
+
+  if(selectedRows.length>0){
+
+    const task = selectedRows[0];
+    const id=task.id;
+    this.todoService.deleteById(id).subscribe(
+      resp=>{
+        alert('secilen todo silindi');
+        this.loadRows();
+      }
+    );
+  }else{
+    alert('siyahidan secim edilmelidir');
+  }
+
+}
+
+onUpdateTodo(){
+  let selectedRows=this.agGrid.api.getSelectedRows();
+
+  if(selectedRows.length>0){
+
+    const task = selectedRows[0];
+     this.todoService.selectedTask=task;
+     this.matDialog.open(AddTodoComponent);
+  }else{
+    alert('siyahidan secim edilmelidir');
+  }
+}
 }

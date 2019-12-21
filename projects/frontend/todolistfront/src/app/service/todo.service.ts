@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../model/task';
+import { Task, Category } from '../model/task';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
+  selectedTask: Task;
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +16,7 @@ export class TodoService {
   }
 
   addTodoToBackend(todo: Task) {
-    this.http.post('http://localhost:8080/tasks', todo).subscribe(
+    this.http.post<Task>('http://localhost:8080/tasks', todo).subscribe(
       cavab => {
         console.log('new inserted task id = '+cavab);
         alert('tapsiriq ugurla qeydiyyat olundu');
@@ -25,5 +26,7 @@ export class TodoService {
     );
   }
 
-
+deleteById(id:number){
+  return this.http.delete(`http://localhost:8080/tasks/${id}`);
+}
 }
