@@ -18,10 +18,12 @@ import az.developia.todo.model.Task;
 public class TaskRestController {
 
 	@RequestMapping(method=RequestMethod.POST)
-	public void addTask(@RequestBody Task task){
+	public Integer addTask(@RequestBody Task task){
 		int id=DB.tasks.size()+1;
 		task.setId(id);
 		DB.tasks.add(task);
+		
+		return id;
 	}
 	
 	
