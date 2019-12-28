@@ -8,7 +8,7 @@ import { TodoService } from 'src/app/service/todo.service';
   styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent implements OnInit {
-todo:Task=new Task();
+public todo:Task=new Task();
 categories:Category[]=[];
 
   constructor(private todoService:TodoService) { }
@@ -24,7 +24,7 @@ categories:Category[]=[];
     this.categories.push(c1,c2);
     this.todo.category.id=1;
 
-    this.todo=this.todoService.selectedTask;
+  //  this.todo=this.todoService.selectedTask;
   }
   onSaveTodo(){
     // console.log(this.todo);
