@@ -38,7 +38,7 @@ public class TaskRestController {
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Task> findAll(){
 		 
-		return DB.tasks;
+		return taskDAO.findAll();
 	}
 	
 	
