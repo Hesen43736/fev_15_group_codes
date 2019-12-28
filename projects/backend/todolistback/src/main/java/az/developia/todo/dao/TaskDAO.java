@@ -25,17 +25,33 @@ public class TaskDAO {
 		Integer id=0;
 		try{
 			Connection c=source.getConnection();
-			PreparedStatement ps=c.prepareStatement("insert into task (task,day,category_id) "
+			PreparedStatement ps=null;
+			ResultSet r=null;
+			if(task.getId()>0){
+				 ps=c.prepareStatement("update task set task=?,day=?,category_id=? where id=?");
+				 ps.setString(1, task.getTask());
+				 ps.setInt(2, task.getDay());
+				 ps.setInt(3, task.getCategory().getId());
+				 ps.setInt(4, task.getId());
+				 ps.executeUpdate();
+				
+			}else{
+			  ps=c.prepareStatement("insert into task (task,day,category_id) "
 					+ " values (?,?,?); ",Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1,task.getTask() );
 			ps.setInt(2, task.getDay());
 			ps.setInt(3, task.getCategory().getId());
 			ps.executeUpdate();
-			ResultSet r = ps.getGeneratedKeys();
+			  r = ps.getGeneratedKeys();
 			if (r.next()) {
 				id = r.getInt(1);
 			}
-			r.close();
+			}
+			
+			
+			
+			if(r!=null){
+			r.close();}
 			ps.close();
 			c.close();
 		}catch(Exception exc){

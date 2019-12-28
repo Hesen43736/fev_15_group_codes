@@ -24,7 +24,12 @@ categories:Category[]=[];
     this.categories.push(c1,c2);
     this.todo.category.id=1;
 
-  //  this.todo=this.todoService.selectedTask;
+    if(this.todoService.selectedTask==null){
+
+    }else{
+      this.todo=this.todoService.selectedTask;
+    }
+    
   }
   onSaveTodo(){
     // console.log(this.todo);

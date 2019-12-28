@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onAddTodo(){
+    this.todoService.selectedTask=null;
 this.matDialog.open(AddTodoComponent);
   }
 
