@@ -44,12 +44,7 @@ public class TaskRestController {
 	
 	@DeleteMapping(path="/{id}")
 	public void deleteById(@PathVariable(name="id") Integer id){
-	for (int i = 0; i < DB.tasks.size(); i++) {
-		if(DB.tasks.get(i).id==id){
-			DB.tasks.remove(i);
-			break;
-		}
-	}	
+	 	taskDAO.deleteById(id);
 	}
 	
 }

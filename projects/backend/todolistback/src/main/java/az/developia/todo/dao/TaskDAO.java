@@ -74,6 +74,19 @@ public class TaskDAO {
 		} 
 		return tasks;
 	}
+
+	public void deleteById(Integer id) {
+		try{
+			Connection c=source.getConnection();
+			PreparedStatement ps=c.prepareStatement("delete from task where id="+id);
+			 ps.executeUpdate();
+			ps.close();
+			c.close(); 
+		}catch(Exception exc){
+			exc.printStackTrace();
+		} 
+		
+	}
 	
 	
 	
