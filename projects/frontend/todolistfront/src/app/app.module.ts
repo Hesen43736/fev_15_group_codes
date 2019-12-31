@@ -13,6 +13,7 @@ import { MatInputModule, MatDialogModule, MatProgressSpinnerModule, MatButtonMod
 import { AddTodoComponent } from './component/add-todo/add-todo.component';
 import { AgGridModule } from 'ag-grid-angular';
 import {HttpClientModule} from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {HttpClientModule} from '@angular/common/http';
     AgGridModule.withComponents([]),
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents:[AddTodoComponent]
 })

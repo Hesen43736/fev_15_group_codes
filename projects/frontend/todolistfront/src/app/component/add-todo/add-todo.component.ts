@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Task, Category } from 'src/app/model/task';
 import { TodoService } from 'src/app/service/todo.service';
+import { CategoryService } from 'src/app/service/category.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-todo',
@@ -11,37 +13,48 @@ export class AddTodoComponent implements OnInit {
 public todo:Task=new Task();
 categories:Category[]=[];
 
-  constructor(private todoService:TodoService) { }
+  constructor(private todoService:TodoService,
+    private categoryService:CategoryService,
+    private datePipe:DatePipe) { }
 
   ngOnInit() {
-    let c1:Category=new Category();
-    c1.id=1;
-    c1.name="Learning";
-    let c2:Category=new Category();
-    c2.id=2;
-    c2.name="Travel";
+     this.categoryService.findAll().subscribe(
+       resp=>{
+         this.categories=resp;
+
+
+         if(this.todoService.selectedTask==null){
+this.todo.category=this.categories[0];
+        }else{
+          this.todo=this.todoService.selectedTask;
+          
+        }
+        
+
+       }
+     );
     
-    this.categories.push(c1,c2);
-    this.todo.category.id=1;
-
-    if(this.todoService.selectedTask==null){
-
-    }else{
-      this.todo=this.todoService.selectedTask;
-    }
     
   }
   onSaveTodo(){
-    // console.log(this.todo);
-    // let todo:Task=new Task();
-    // todo.task=this.todo.task;
-    // todo.day=this.todo.day;
-    // todo.id=(this.todoService.todos.length+1);
-    // this.todoService.todos.push(todo);
+    
 console.log(this.todo);
+this.todo.register=this.changeDateToUTC(this.todo.register);
 this.todoService.addTodoToBackend(this.todo);
 
 
 
+  }
+
+  changeDateToUTC(date:Date):Date{
+       
+    let dateString = this.datePipe.transform(date, 'yyyy-MM-dd');
+     
+    date = new Date(dateString);
+     
+    date.setDate(date.getUTCDate() + 0);
+    
+
+    return date; 
   }
 }

@@ -16,34 +16,28 @@ import az.developia.todo.model.Category;
 import az.developia.todo.model.Task;
 
 @Component
-public class TaskDAO {
+public class CategoryDAO {
 
 	@Autowired
 	private DataSource source;
 	
-	public Integer saveTask(Task task){
+	public Integer saveCategory(Category ct){
 		Integer id=0;
 		try{
 			Connection c=source.getConnection();
 			PreparedStatement ps=null;
 			ResultSet r=null;
-			if(task.getId()>0){
-				 ps=c.prepareStatement("update task set task=?,day=?,category_id=?,register=? where id=?");
-				 ps.setString(1, task.getTask());
-				 ps.setInt(2, task.getDay());
-				 ps.setInt(3, task.getCategory().getId());
-				 ps.setDate(4, task.getRegister());
-				 ps.setInt(5, task.getId());
-				 
+			if(ct.getId()>0){
+				 ps=c.prepareStatement("update category set name=? where id=?");
+				 ps.setString(1, ct.getName()); 
+				 ps.setInt(2, ct.getId());
 				 ps.executeUpdate();
 				
 			}else{
-			  ps=c.prepareStatement("insert into task (task,day,category_id,register) "
-					+ " values (?,?,?,?); ",Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1,task.getTask() );
-			ps.setInt(2, task.getDay());
-			ps.setInt(3, task.getCategory().getId());
-			ps.setDate(4, task.getRegister());
+			  ps=c.prepareStatement("insert into category (name) "
+					+ " values (?,?,?); ",Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1,ct.getName() );
+			 
 			ps.executeUpdate();
 			  r = ps.getGeneratedKeys();
 			if (r.next()) {
@@ -64,26 +58,20 @@ public class TaskDAO {
 		return id;
 	}
 	
-	public List<Task> findAll(){
-		List<Task> tasks=new ArrayList<>();
+	public List<Category> findAll(){
+		List<Category> categories=new ArrayList<>();
 		try{
 			Connection c=source.getConnection();
-			PreparedStatement ps=c.prepareStatement("select * from task_view");
+			PreparedStatement ps=c.prepareStatement("select * from category");
 			 
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
-				Task t=new Task();
-				t.setId(r.getInt("id"));
-				t.setTask(r.getString("task"));
-				t.setDay(r.getInt("day"));
-				t.setRegister(r.getDate("register"));
-				t.setStatus(r.getString("status"));
 				 
 				Category category=new Category();
-				category.setId(r.getInt("category_id"));
-				category.setName(r.getString("category_name"));
-				t.setCategory(category);
-				tasks.add(t);
+				category.setId(r.getInt("id"));
+				category.setName(r.getString("name"));
+				 
+				categories.add(category);
 			} 
 			r.close();
 			ps.close();
@@ -91,13 +79,13 @@ public class TaskDAO {
 		}catch(Exception exc){
 			exc.printStackTrace();
 		} 
-		return tasks;
+		return categories;
 	}
 
 	public void deleteById(Integer id) {
 		try{
 			Connection c=source.getConnection();
-			PreparedStatement ps=c.prepareStatement("delete from task where id="+id);
+			PreparedStatement ps=c.prepareStatement("delete from category where id="+id);
 			 ps.executeUpdate();
 			ps.close();
 			c.close(); 
