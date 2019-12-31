@@ -15,7 +15,9 @@
         </tr>
         <tr>
             <td>Register: </td>
-            <td><input type="date" [(ngModel)]="todo.register" name="register" /></td>
+            <td><input type="date" 
+                [ngModel]="todo.register | date:'yyyy-MM-dd'" 
+                (ngModelChange)="todo.register = $event" name="register" /></td>
         </tr>
         <tr>
             <td>Category: </td>
