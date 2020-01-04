@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../model/task';
 
 @Injectable({
@@ -11,7 +11,17 @@ export class CategoryService {
 
   
   public findAll() {
-    return this.http.get<Category[]>('http://localhost:8083/categories');
+    let headerString='Basic '+window.btoa('developia:d123');
+    console.log('headerString : '+headerString);
+    let headersObject=new HttpHeaders(
+      {
+        Authorization: headerString
+      }
+    );
+
+    return this.http.get<Category[]>('http://localhost:8083/categories',{
+      headers:headersObject
+    });
 
   }
 
