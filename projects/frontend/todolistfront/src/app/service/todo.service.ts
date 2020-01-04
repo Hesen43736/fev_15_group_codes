@@ -12,16 +12,7 @@ export class TodoService {
 
 
   public getAllTodos() {
-let headerString='Basic '+window.btoa('developia:d123');
-    let headersObject=new HttpHeaders(
-      {
-        Authorization: headerString
-      }
-    );
-    return this.http.get<Task[]>('http://localhost:8083/tasks',{
-      headers:headersObject
-    });
-
+    return this.http.get<Task[]>('http://localhost:8083/tasks');
   }
 
   addTodoToBackend(todo: Task) {
