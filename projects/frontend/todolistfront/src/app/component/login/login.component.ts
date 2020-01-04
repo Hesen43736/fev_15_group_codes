@@ -1,35 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/model/task';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 
 @Component({
-selector:'app-login',
-templateUrl:'./login.component.html',
-styleUrls:['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
     ngOnInit(): void {
-       
+
     }
-username:string='';
-password:string='';
+    username: string = '';
+    password: string = '';
+    loginButtonPressed() {
 
-realUsername:string='dea';
-realPassword:string='1234';
-loginButtonPressed(){
-   
-//console.log('username : '+this.username);
-//console.log('password : '+this.password);
+        let headerString = 'Basic ' + window.btoa(this.username + ':' + this.password);
 
-  
-if(this.username===this.realUsername && this.password===this.realPassword){
-console.log('success login');
-}else{
-    console.log('login failed');
-}
+        let headersObject = new HttpHeaders(
+            {
+                Authorization: headerString
+            }
+        );
+
+        this.http.get<boolean>('http://localhost:8083/validations', {
+            headers: headersObject
+        }).subscribe(
+            success => {
+                sessionStorage.setItem('authorization', headerString);
+              
+
+            }, error => {
+alert('invalid credentials');
+            }
+        );
 
 
-}
 
+    }
 
+    constructor(private http: HttpClient) {
+
+    }
 }

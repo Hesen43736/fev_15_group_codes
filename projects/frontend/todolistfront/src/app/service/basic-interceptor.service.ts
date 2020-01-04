@@ -7,7 +7,10 @@ import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http'
 export class BasicInterceptorService implements HttpInterceptor{
  
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    let headerString: string = 'Basic ' + window.btoa('developia:d123');
+    let authorization:string=sessionStorage.getItem('authorization');
+   
+    if(authorization){
+ let headerString: string = authorization;
     request = request.clone(
       {
         setHeaders: {
@@ -15,6 +18,8 @@ export class BasicInterceptorService implements HttpInterceptor{
         }
       }
     );
+    }else{
+   }
     return next.handle(request);
   }
 
