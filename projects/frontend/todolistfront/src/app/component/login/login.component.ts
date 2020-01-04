@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/model/task';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
         }).subscribe(
             success => {
                 sessionStorage.setItem('authorization', headerString);
-              
+              this.router.navigate(['todos']);
 
             }, error => {
 alert('invalid credentials');
@@ -40,7 +41,7 @@ alert('invalid credentials');
 
     }
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,private router:Router) {
 
     }
 }
