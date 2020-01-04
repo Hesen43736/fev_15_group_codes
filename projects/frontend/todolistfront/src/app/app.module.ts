@@ -12,8 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatDialogModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
 import { AddTodoComponent } from './component/add-todo/add-todo.component';
 import { AgGridModule } from 'ag-grid-angular';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { BasicInterceptorService } from './service/basic-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { DatePipe } from '@angular/common';
     AgGridModule.withComponents([]),
     HttpClientModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    {provide:HTTP_INTERCEPTORS,useClass:BasicInterceptorService,multi:true}
+  ],
   bootstrap: [AppComponent],
   entryComponents:[AddTodoComponent]
 })
