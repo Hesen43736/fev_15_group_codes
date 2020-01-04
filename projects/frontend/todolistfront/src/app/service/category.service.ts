@@ -11,7 +11,7 @@ export class CategoryService {
 
   
   public findAll() {
-    return this.http.get<Category[]>('http://localhost:8080/categories');
+    return this.http.get<Category[]>('http://localhost:8083/categories');
 
   }
 

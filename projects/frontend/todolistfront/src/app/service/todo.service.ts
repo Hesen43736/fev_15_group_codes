@@ -11,12 +11,12 @@ export class TodoService {
 
 
   public getAllTodos() {
-    return this.http.get<Task[]>('http://localhost:8080/tasks');
+    return this.http.get<Task[]>('http://localhost:8083/tasks');
 
   }
 
   addTodoToBackend(todo: Task) {
-    this.http.post<Task>('http://localhost:8080/tasks', todo).subscribe(
+    this.http.post<Task>('http://localhost:8083/tasks', todo).subscribe(
       cavab => {
         console.log('new inserted task id = '+cavab);
         alert('tapsiriq ugurla qeydiyyat olundu');
@@ -27,6 +27,6 @@ export class TodoService {
   }
 
 deleteById(id:number){
-  return this.http.delete(`http://localhost:8080/tasks/${id}`);
+  return this.http.delete(`http://localhost:8083/tasks/${id}`);
 }
 }
