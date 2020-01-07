@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,10 +48,34 @@ public class TaskRestController {
 	 	taskDAO.deleteById(id);
 	}
 	
+	
+	
+	@PutMapping(path="/change-status/{id}")
+	public void changeStatusById(@PathVariable(name="id") Integer id,@RequestBody StatusModel statusModel){
+	 	taskDAO.changeStatusById(id,statusModel.getStatus());
+	}
+	
+	
 }
 
 
 
-
+class StatusModel{
+	private int id;
+	private String status;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+}
 
 

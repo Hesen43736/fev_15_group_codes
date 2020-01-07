@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task, Category } from '../model/task';
+import { Task, Category, StatusModel } from '../model/task';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { headersToString } from 'selenium-webdriver/http';
 @Injectable({
@@ -29,4 +29,18 @@ export class TodoService {
 deleteById(id:number){
   return this.http.delete(`http://localhost:8083/tasks/${id}`);
 }
+
+
+changeStatusById(id:number,status:string){
+  if(status==='Həll olunmayıb'){
+    status='Həll olundu';
+  }else{
+    status='Həll olunmayıb';
+  }
+  let statusModel:StatusModel=new StatusModel();
+  statusModel.status=status;
+  return this.http.put(`http://localhost:8083/tasks/change-status/${id}`,statusModel);
+}
+
+
 }

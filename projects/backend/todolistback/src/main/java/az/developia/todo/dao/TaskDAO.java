@@ -109,6 +109,21 @@ public class TaskDAO {
 	
 	
 	
+	
+	public void changeStatusById(Integer id,String status) {
+		try{
+			Connection c=source.getConnection();
+			PreparedStatement ps=c.prepareStatement
+					("update task set status='"+status+"' where id="+id);
+			 ps.executeUpdate();
+			ps.close();
+			c.close(); 
+		}catch(Exception exc){
+			exc.printStackTrace();
+		} 
+		
+	}
+	
 }
 
 

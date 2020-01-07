@@ -85,4 +85,23 @@ onUpdateTodo(){
     alert('siyahidan secim edilmelidir');
   }
 }
+
+
+onDoneTodo(){
+  let selectedRows=this.agGrid.api.getSelectedRows();
+
+  if(selectedRows.length>0){
+
+    let task = selectedRows[0];
+    let id=task.id;
+    this.todoService.changeStatusById(id,task.status).subscribe(
+      resp=>{
+        alert('statusu deyisdi');
+        this.loadRows();
+      }
+    );
+  }else{
+    alert('siyahidan secim edilmelidir');
+  }
+}
 }

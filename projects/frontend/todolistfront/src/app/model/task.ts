@@ -18,3 +18,10 @@ export class Category{
 public id:number;
 public name:string;
 }
+
+
+
+export class StatusModel{
+    public id:number;
+    public status:string;
+    }
