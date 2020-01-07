@@ -16,6 +16,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { BasicInterceptorService } from './service/basic-interceptor.service';
 import { MenuComponent } from './component/menu/menu.component';
+import { LogoutComponent } from './component/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MenuComponent } from './component/menu/menu.component';
     StudentListComponent,
     TodoListComponent,
     AddTodoComponent,
-    MenuComponent
+    MenuComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
