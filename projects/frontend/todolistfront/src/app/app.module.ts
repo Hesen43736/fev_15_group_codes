@@ -15,6 +15,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { BasicInterceptorService } from './service/basic-interceptor.service';
+import { MenuComponent } from './component/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BasicInterceptorService } from './service/basic-interceptor.service';
     ArraysComponent,
     StudentListComponent,
     TodoListComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
