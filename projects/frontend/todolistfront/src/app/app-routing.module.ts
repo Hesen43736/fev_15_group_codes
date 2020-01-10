@@ -6,10 +6,10 @@ import { LogoutComponent } from './component/logout/logout.component';
 
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+  {path:'',component:LoginComponent,canActivate:[]},
   {path:'login',component:LoginComponent},
   {path:'logout',component:LogoutComponent},
-  {path:'todos',component:TodoListComponent},
+  {path:'todos',component:TodoListComponent,canActivate:[]},
   {path:'**',component:LoginComponent}
 ];
 
