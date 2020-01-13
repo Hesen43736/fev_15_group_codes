@@ -1,5 +1,7 @@
 package az.developia.booking.controller;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class BookRestController {
 		book.setImage("java12.png");
 		book.setQuantity(1000);
 		book.setPageCount(355);
-		 
+		 book.setRegister(Timestamp.valueOf(LocalDateTime.of(2019, 6, 16, 12, 12,12)));
 		bookDAO.save(book);
 		
 	}

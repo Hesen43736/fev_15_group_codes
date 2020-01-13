@@ -1,5 +1,7 @@
 package az.developia.booking.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +18,10 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	private String author;
+	private String author;// change to object
 	private String description;
 	private String image;
 	private Integer pageCount;
 	private Integer quantity;
-
+	private Timestamp register;
 }
