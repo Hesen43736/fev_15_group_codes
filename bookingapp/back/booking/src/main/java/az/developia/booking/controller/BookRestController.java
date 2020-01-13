@@ -46,4 +46,23 @@ public class BookRestController {
 		
 	}
 	
+	
+	@GetMapping(path="/update")
+	public void  update( ){ 
+		Book book=new Book();
+		book.setId(333); 
+		book.setName("Java 121");
+		book.setAuthor("James Gosling1");
+		book.setDescription("Java 12 description1");
+		book.setImage("java12.png1");
+		book.setQuantity(10001);
+		book.setPageCount(3551);
+		 
+		bookDAO.save(book);
+		
+	}
+	
+	
+	
+	
 }
