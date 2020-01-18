@@ -23,6 +23,8 @@ public class UserRestController {
 
 	@PostMapping
 	public User save(@RequestBody User user) {
+		 
+		user.setPassword("{noop}"+user.getPassword());
 		User savedUser=userDAO.save(user);
 		
 		userJDBCDAO.createUserAuthority(user.getUsername());
