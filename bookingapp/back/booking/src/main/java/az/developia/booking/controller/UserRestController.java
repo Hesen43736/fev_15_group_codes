@@ -1,6 +1,7 @@
 package az.developia.booking.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,6 @@ public class UserRestController {
 		userJDBCDAO.createUserAuthority(user.getUsername());
 		return savedUser;
 
-	}
-
+	} 
+	@GetMapping(path="/validate") public void validate( ) { } 
 }
