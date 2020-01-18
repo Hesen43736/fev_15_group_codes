@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import az.developia.booking.dao.BookDAO;
-import az.developia.booking.model.Author;
 import az.developia.booking.model.Book;
 
 @RestController
@@ -33,16 +32,9 @@ public class BookRestController {
 		book.setQuantity(1000);
 		book.setPageCount(355);
 		 book.setRegister(Timestamp.valueOf(LocalDateTime.of(2019, 6, 16, 12, 12,12)));
-		 
-		 Author eli=new Author();
-		 eli.setName("Əli");
-		 
-		 Author unsal=new Author();
-		 unsal.setName("Ünsal");
+		  book.setAuthor("Muellif");
 		 
 		 
-		 book.addAuthor(eli);
-		 book.addAuthor(unsal);
 		 
 		bookDAO.save(book);
 		
@@ -66,7 +58,7 @@ public class BookRestController {
 		Book book=new Book();
 		book.setId(333); 
 		book.setName("Java 121");
-		 
+		 book.setAuthor("Muellif");
 		book.setDescription("Java 12 description1");
 		book.setImage("java12.png1");
 		book.setQuantity(10001);

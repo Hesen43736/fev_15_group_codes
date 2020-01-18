@@ -22,7 +22,7 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	
+	private String author;
 	private String description;
 	private String image;
 	private Integer pageCount;
@@ -30,14 +30,7 @@ public class Book {
 	private Timestamp register;
 	
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	private List<Author> authors;
-	public void addAuthor(Author author){
-		if(authors==null){
-			authors=new ArrayList<>();
-		}
-		authors.add(author);
-	}
+	 
 	
 	
 	
