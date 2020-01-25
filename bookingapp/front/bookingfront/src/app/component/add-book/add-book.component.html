@@ -1,2 +1,2 @@
 <input type="text" [(ngModel)]="book.name" />
-<input type="file"   />
+<input type="file" (change)="imageSelected($event)"  />

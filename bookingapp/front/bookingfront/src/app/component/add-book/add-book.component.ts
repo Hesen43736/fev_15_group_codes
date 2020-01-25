@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookListComponent } from '../book-list/book-list.component';
 import { Book } from 'src/app/model/book';
 import { UploadService } from 'src/app/service/upload.service';
+import { BookService } from 'src/app/service/book.service';
 
 @Component({
   selector: 'app-add-book',
@@ -10,7 +11,7 @@ import { UploadService } from 'src/app/service/upload.service';
 })
 export class AddBookComponent implements OnInit {
 book:Book=new Book();
-  constructor(private uploadService:UploadService) { }
+  constructor(private uploadService:UploadService,private bookService:BookService) { }
 
   ngOnInit() {
   }
@@ -18,11 +19,22 @@ book:Book=new Book();
 image:File;
 
 imageSelected(event){
-  let image=event.target.files[0];
+  this.image=event.target.files[0];
   let  fd:FormData=new FormData();
 fd.append('file',this.image);
 
-this.uploadService.uploadImage(fd);
+this.uploadService.uploadImage(fd).subscribe(
+  resp=>{
+    alert('image upload success');
+    this.book.image=resp.image;
+    console.log('book : '+this.book);
+    this.bookService.addBook(this.book).subscribe(
+      respBook=>{
+        console.log(respBook);
+      }
+    );
+  }
+);
 
 }
 }

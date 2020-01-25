@@ -5,6 +5,6 @@ export class Book{
 
     public id:number;
     public name:string;
-    private image:string;
-    
+    public  image:string;
+
 }
