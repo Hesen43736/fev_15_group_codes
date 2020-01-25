@@ -5,9 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { InterceptorService } from './service/interceptor.service';
+import { MenuComponent } from './component/menu/menu.component';
+import { LoginComponent } from './component/login/login.component';
+import { LogoutComponent } from './component/logout/logout.component';
+import { SignupComponent } from './component/signup/signup.component';
+import { AddBookComponent } from './component/add-book/add-book.component';
+import { BookListComponent } from './component/book-list/book-list.component';
+import { ImageViewComponent } from './component/image-view/image-view.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    LoginComponent,
+    LogoutComponent,
+    SignupComponent,
+    AddBookComponent,
+    BookListComponent,
+    ImageViewComponent
   ],
   imports: [
     BrowserModule,
