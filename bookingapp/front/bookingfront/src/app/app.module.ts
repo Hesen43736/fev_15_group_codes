@@ -12,6 +12,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { AddBookComponent } from './component/add-book/add-book.component';
 import { BookListComponent } from './component/book-list/book-list.component';
 import { ImageViewComponent } from './component/image-view/image-view.component';
+import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { ImageViewComponent } from './component/image-view/image-view.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ {
     provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true
