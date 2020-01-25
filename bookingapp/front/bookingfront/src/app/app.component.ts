@@ -13,8 +13,8 @@ constructor(private http:HttpClient){
 }
   
 imageSelected(event){
-
-  let myImage=event.target.files[0];
+console.log(event);
+  let myImage= event.target.files[0] ;
   
   let  fd:FormData=new FormData();
   fd.append('file',myImage);
