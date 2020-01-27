@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     let index = 0;
     let studentSize = this.students.length;
     let questionSize = this.questions.length;
+    let counter:number=0;
     while (index < studentSize) {
       const s = this.students[index];
       let studentQuestion: StudentQuestion = new StudentQuestion();
@@ -50,6 +51,8 @@ export class AppComponent implements OnInit {
         }
       }
       if(exists){
+        counter++;
+        console.log('exists : '+counter);
         continue;
       }else{
          studentQuestion.question =question;
