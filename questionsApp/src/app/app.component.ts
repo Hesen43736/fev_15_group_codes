@@ -63,5 +63,13 @@ export class AppComponent implements OnInit {
      
      
     }
+
+
+    let ses=new Audio();
+    ses.src='../assets/ses.wav';
+    ses.load();
+    ses.play();
+
+    
   }
 }
