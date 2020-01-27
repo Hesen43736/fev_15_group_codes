@@ -27,19 +27,38 @@ export class AppComponent implements OnInit {
 
   shuffleQuestions() {
     this.studentQuestions = [];
-    for (let index = 0; index < this.students.length; index++) {
+    let index = 0;
+    let studentSize = this.students.length;
+    let questionSize = this.questions.length;
+    while (index < studentSize) {
       const s = this.students[index];
       let studentQuestion: StudentQuestion = new StudentQuestion();
       studentQuestion.student = s;
-      let questionSize = this.questions.length;
+
       let rand = Math.random();
       if (rand >= 0.94) {
         rand = 0.94;
       }
       let randomQuestionIndex = rand * questionSize;
       randomQuestionIndex = Number.parseInt(randomQuestionIndex.toFixed(0));
-      studentQuestion.question = this.questions[randomQuestionIndex]; 
-      this.studentQuestions.push(studentQuestion); 
+      let question = this.questions[randomQuestionIndex];
+      let exists: boolean = false;
+      for (let index = 0; index < this.studentQuestions.length; index++) {
+        const e = this.studentQuestions[index];
+        if (e.question == question) {
+          exists = true; break;
+        }
+      }
+      if(exists){
+        continue;
+      }else{
+         studentQuestion.question =question;
+         this.studentQuestions.push(studentQuestion);
+         index++;
+      }
+
+     
+     
     }
   }
 }
